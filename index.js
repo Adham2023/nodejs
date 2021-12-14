@@ -10,4 +10,11 @@
 // console.log(x === y)
 
 
-console.log(3000 % 997)
+// console.log(3000 % 997)
+// console.log("one\
+// long\
+// line")
+
+let s = "testing: 1, 2, 3"
+
+console.dir(global)
