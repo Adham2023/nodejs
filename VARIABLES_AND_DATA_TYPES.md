@@ -236,3 +236,37 @@ Shuningdek JS da arifmetikada hisoblash checksizlik bo'ladigan holda `Error` yan
 ```javascript
 console.log( 1 / 0); // logs: Infinity
 ```
+
+Va biz ushbu Constanta qiymatlrni ko'rishimiz mumkin:
+```javascript
+Infinity                    // A positive number too big to represent
+Number.POSITIVE_INFINITY    // Same value
+1/0                         // => Infinity
+Number.MAX_VALUE * 2        // => Infinity; overflow
+
+-Infinity                   // A negative number too big to represent
+Number.NEGATIVE_INFINITY    // The same value
+-1/0                        // => -Infinity
+-Number.MAX_VALUE * 2       // => -Infinity
+
+Number.MIN_VALUE/2          // => 0: underflow
+-Number.MIN_VALUE/2         // => -0: negative zero
+-1/Infinity                 // -> -0: also negative 0
+-0
+```
+NaN qiymati:
+```javascript
+NaN                         // The not-a-number value
+Number.NaN                  // The same value, written another way
+0/0                         // => NaN
+Infinity/Infinity           // => NaN
+
+```
+
+Bu qiymat nimadur son emasligini aytadi lekin bu qiymatga o'zgaruvchini tengligini yoki teng emasligini tekshira olmaymiz:
+```javascript
+// masalan bizda x o'zgaruvchisi mavjud va bu o'zgaruvchi NaN yiki qo'yligini
+x != NaN // qila olmaymiz JS buni qila olmayd uning o'rniga ikkita usul mavjud
+x != x // yoki
+Number.isNaN(x) // bilan aniqlash mumkin
+```
