@@ -12,7 +12,8 @@ Console bir nechta guruhlarga bo'linadi:
 
 
 - console.assert(expression, object)
-    Log level: Error
+
+Log level: Error
     ```javascript
     const x = 5;
     const y = 3;
@@ -29,7 +30,8 @@ Console bir nechta guruhlarga bo'linadi:
     **clear dan keyin**:
     ![Before console.clear](/assets/console/after_clear.png)
 - console.count([label])
-    Log level: Info
+
+Log level: Info
     _`count` bu biz bergan **label** necha marorataba ishaltilganini soni bilan ko'rsatadi: 
 
     ```javascript
@@ -41,7 +43,8 @@ Console bir nechta guruhlarga bo'linadi:
     ![Before console.clear](/assets/console/count.png)
 
 - console.countReset([label])
-  _Va bizlar `console.count` ni sanashini tozlash uchun ushbu console turini ishlatamiz._
+
+_Va bizlar `console.count` ni sanashini tozlash uchun ushbu console turini ishlatamiz._
   ```javascript
   console.resetCount('console logger')
   ```
@@ -55,20 +58,24 @@ Console bir nechta guruhlarga bo'linadi:
     ![Before console.clear](/assets/console/debug.png)
 
 - console.dir(object)
-    Log level: Info
-    ```javascript
-    console.dir(document.head);
-    ```
-    ![Before console.clear](/assets/console/dir.png)
+
+Log level: Info
+
+```javascript
+console.dir(document.head);
+```
+![Before console.clear](/assets/console/dir.png)
 
 - console.error(object [, object, ...])
-    Log level: Error
-    ```javascript
-    console.error("I'm sorry, Dave. I'm afraid I can't do that.");
-    ```
-    ![Before console.clear](/assets/console/error.png)
+
+Log level: Error
+```javascript
+console.error("I'm sorry, Dave. I'm afraid I can't do that.");
+```
+![Before console.clear](/assets/console/error.png)
 
 - console.group(label)
+
 ```javascript
 const label = 'Adolescent Irradiated Espionage Tortoises';
 console.group(label);
@@ -80,20 +87,29 @@ console.info('Raph');
 console.groupEnd(label);
 ```
 - console.groupCollapsed(label)
+
 Same as console.group(label), except the group is initially collapsed when it's logged to the Console.
 _`console.group(label)` bilan bir hil faqat birinchi marta ishlatilganda guruh yig'ilib turadi_
+
 - console.groupEnd(label)
 _Guruhni oxiri ekanligini bildiradi agar birinchi label bilan ishlatilsa.
 - console.info(object [, object, ...])
+
 Log level: Info
+
 _`console.log` bilan bir hil._
+
 - console.log(object [, object, ...])
+
 Log level: Info
+
 _Console ga habar chiqarish uchun.
-    ![Before console.clear](/assets/console/log.png)
+![Before console.clear](/assets/console/log.png)
 
 - console.table(array)
+
 Log level: Info
+
 _Berilgan habarni jadval ko'rinishida chiqaradi._
 ```javascript
 console.table([
@@ -113,7 +129,9 @@ console.table([
 ]);
 ```
 ![Before console.clear](/assets/console/table.png)
+
 - console.time([label])
+
 _Yangi timer ni boshlaydi va uni to'xtatib sarflangan vaqtni ko'rishi uchun `console.timeEnd(label)` ni ishlatiladi_ agar label berilmasa `default: ..` ko'rinishida bo'ladi.
 ```javascript
 console.time();
@@ -125,6 +143,7 @@ console.timeEnd();
 ![Before console.clear](/assets/console/time.png)
 
 - console.timeEnd([label])
+
 Log level: Info
 _ `console.time()` tomonidan boshlangan vaqt sanashni to'xtadai va natijani chiqaradi. _
 
