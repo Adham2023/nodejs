@@ -15,16 +15,10 @@
 // long\
 // line")
 
-const henry = {
-    name: 'aaa'
-}
+let a = [1]
 
+a[13] = 12
 
-henry.name = "bbb"
+console.log(a)
+console.log(a.length)
 
-henry['some txt'] = 'aaa'
-let ss = new Object({name: 'aaa'})
-// ss = henry
-console.log(ss === henry)
-let num  = +'12'
-console.dir([1, 2, 3].toString())
