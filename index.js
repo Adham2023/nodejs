@@ -15,6 +15,16 @@
 // long\
 // line")
 
-let s = "testing: 1, 2, 3"
+const henry = {
+    name: 'aaa'
+}
 
-console.dir(global)
+
+henry.name = "bbb"
+
+henry['some txt'] = 'aaa'
+let ss = new Object({name: 'aaa'})
+// ss = henry
+console.log(ss === henry)
+let num  = +'12'
+console.dir([1, 2, 3].toString())

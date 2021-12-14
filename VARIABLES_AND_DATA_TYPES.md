@@ -608,5 +608,7 @@ NaN
 Qolgan hamma turdagi va qiymatdagi ma'lumotlar true boolean qiymatga ega.
 
 ---
-Primitive o' qiymatlar
+
+
+
 
