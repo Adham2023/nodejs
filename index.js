@@ -22,3 +22,6 @@ a[13] = 12
 console.log(a)
 console.log(a.length)
 
+let max = maxWidth ?? preferences.maxWidth ?? 500
+console.log(max)
+
