@@ -116,7 +116,10 @@ let person_object = {
 ```
 
 
-## Number
+<details>
+<summary> 
+## Number 
+</summary>
 
 
 JavaScriptda butun sonlar `Number.MIN_SAVE_INTEGER` va `Number.MAX_SAFE_INTEGER` oralig'ida 
@@ -269,4 +272,71 @@ Bu qiymat nimadur son emasligini aytadi lekin bu qiymatga o'zgaruvchini tengligi
 x != NaN // qila olmaymiz JS buni qila olmayd uning o'rniga ikkita usul mavjud
 x != x // yoki
 Number.isNaN(x) // bilan aniqlash mumkin
+/* 
+    bu code bizga agar berilgan x o'zgaruvchisi son bo'lsa 
+    (non-numeric) true qaytaradi. 
+    Va bu shu navbatda ushbu o'zgaruvchi qiymati songa 
+    o'girib bo'lmasligini bildiradi 
+*/
 ```
+
+`Number` da yana `Number.isFinite()` kabi boshqa yordamchi funksiyalar mavjud.
+
+
+
+#### Yahlitlashdagi xatolar (Rounding-Errors)
+
+
+JavaScript Raqam sistemasi bir nechta xatolarga yo'l qo'yishi mumkin
+
+```javascript
+let x = .3 - .2 // 30 cent - 20 cent 
+let y = .2 - .1 // 20 cent - 10 cent
+
+x ===  y // => false
+```
+
+#### BigInt 
+
+Bu Son turi Juda ham katta son turi  va JavaScriptda biz BigInt soni quydagicha ifodlashimiz mumkin:
+```javascript
+1234n // juda ham katta bo'lmagan BigInt literal
+0b111111n // ikkilik sanoq sisyemasidagi BigInt soni ifodalanishi
+0o7777n // sakkizlik sanoq sisyemasidagi BigInt soni ifodalanishi
+0x8000000000000n // => 2n**63n: A 64-bit integer
+```
+
+
+Biz JS da `BigInt()` funksiyasidan Harqanday sonni BigInt turiga o'zgartirishimiz mumkin:
+```javascript
+
+BigInt(Number.MAX_SAFE_INTEGER)     // => 9007199254740991n
+let string = "1" + "0".repeat(100); // 1 dan keyin 100 nollar.
+BigInt(string)             
+
+``` 
+
+BigInt sonlari arifmetikasi huddi butun sonlar Arifmetikasiga o'xshash lekin faqatgina bo'lish operatori endi yaxlidlagan holda natijani beradi
+```javascript
+1000n + 2000n  // => 3000n
+3000n - 2000n  // => 1000n
+2000n * 3000n  // => 6000000n
+3000n / 997n   // => 3n: 
+3000 / 997     // => 3.009027081243731 bo'lishligi kerak edi.
+3000n % 997n   // => 9n: and the remainder is 9
+(2n ** 131071n) - 1n  // A Mersenne soni  39457 raqamdan iborat son
+```
+
+
+#### `Date`:  sanalar
+
+JS da huddi Number, yoki Math kabi Obyektlar yani sanani maxsus ifodalash Obyekti mavjud
+
+```javascript
+let timestamp = Date.now() //  hozirgi timestamp yani hozirgi sanani milli sekundda ifodalash
+let now = new Date() // bu esa Maxsus Date Obyekt ko'rinishida sanani ifodalanishi
+let ms = now.getTime();      // Convert to a millisecond timestamp.
+let iso = now.toISOString(); // Convert to a string in standard format.
+```
+
+<details>
