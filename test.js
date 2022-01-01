@@ -1,92 +1,95 @@
-// "use strict";
-// function subarraySum(arr, n, s) {
-//   let sum = 0;
-//   let left = 0,
-//     right = 0;
-//   while (right < n) {
-//     if (sum > s) {
-//       sum -= arr[left];
-//       left++;
-//       console.log("sliding left", left, sum)
-//     }
-//     else if (sum < s) {
-//       sum += arr[right];
-//       right++;
-//       console.log("sliding right", right, sum)
-//     }
-//     if (sum === s) {
-//       return [left + 1, right ];
+// function addPrivateProperty(o, name, predicate) {
+//   let value;
+
+//   o[`get${name}`] = function() { return value }
+
+//   o[`set${name}`] = function(v) {
+//     if(predicate && !predicate(v)) {
+//       throw new TypeError(`set${name}: invalid value ${v}`);
+//     } else {
+//       value = v
 //     }
 //   }
-//   while (sum !== s && left < n) {
-//     sum -= arr[left];
-//     left++;
-//   }
-//   if (sum !== s) return [-1];
-//   return [left + 1, right ];
+
 // }
 
-// console.log(
-//   subarraySum(
-//     [
-//         135, 101, 170 ,125,79 ,159 ,163, 65, 106 ,146, 82, 28, 162 ,92 ,196, 143, 28 ,37, 192, 5 ,103 ,154, 93 ,183 ,22 ,117 ,119, 96 ,48, 127, 172 ,139, 70, 113, 68 ,100, 36, 95, 104 ,12, 123, 134
-//     ],
-//     42,
-//     468
-//   )
-// );
+// let o = {}
 
-// let o = {
-//   // An object o.
-//   m: function () {
-//     // Method m of the object.
-//     let self = this; // Save the "this" value in a variable
-//     console.log(this === o); // => true: "this" is the object o.
-//     f();
-//     f2();
-//     function f() {
-//       // A nested function f
-//       console.log(this === o); // => false: "this" is global or undefined
-//       console.log(this);
-//       console.log(self === o); // => true: self is the outer "this" value
-//     }
+// addPrivateProperty(o, "Name", x => typeof x === 'string')
 
-//     const f2 = (() => {
-//       // A nested function f
-//       console.log(this === o); // => false: "this" is global or undefined
-//       console.log(this);
-//       console.log(self === o); // => true: self is the outer "this" value
-//     }).bind(this);
-//   },
-// };
+// try {
 
-// o.m();
+//   o.setName("Frank")
+//   console.log(o.getName())
+//   o.setName(0)
+
+// } catch (error) {
+
+//   console.log('error producing')
+//   console.error(error)
+
+// }
 
 
-// const module2 = {
-//   x: 42,
-//   getX: function() {
-//     return this.x;
+// function constfuncs() {
+//   let funcs = [];
+//   for(var i = 0; i < 10; i++) {
+//       funcs[i] = () => i;
 //   }
-// };
+//   return funcs
+// }
 
+// let funcs = constfuncs();
 
-// const boundGetX = module2.getX.bind(module2);
-// console.log(boundGetX());
-// // expected output: 42
+// console.log(funcs[8]()) // => 10; Why doesn't this return 5?
 
+// function aa(a, b, c, ...d) {
+//   console.log(a,b, c )
+// }
+// let bb = () => 123
+// console.log(bb.name)
 
-let  o = {
-  name: "Adham"
+// Return a memoized version of f.
+// It only works if arguments to f all have distinct string representations.
+function memoize(f) {
+  const cache = new Map();  // Value cache stored in the closure.
+  return function(...args) {
+      // Create a string version of the arguments to use as a cache key.
+      let key = args.length + args.join("+");
+      if (cache.has(key)) {
+          return cache.get(key);
+      } else {
+          let result = f.apply(this, args);
+          cache.set(key, result);
+          return result;
+      }
+  };
 }
 
-function printer(arr) {
-  console.log(this.name)
-  console.log(Array.isArray(arr), arr)
-  arr.forEach(element => {
-    console.log(element)
-  });
+// Return the Greatest Common Divisor of two integers using the Euclidian
+// algorithm: http://en.wikipedia.org/wiki/Euclidean_algorithm
+function gcd(a,b) {  // Type checking for a and b has been omitted
+  if (a < b) {           // Ensure that a >= b when we start
+      [a, b] = [b, a];   // Destructuring assignment to swap variables
+  }
+  while(b !== 0) {       // This is Euclid's algorithm for GCD
+      [a, b] = [b, a%b];
+  }
+  return a;
 }
 
-// printer.call(o)
-printer.call(o, [1, 2, 3])
+const gcdmemo = memoize(gcd);
+gcdmemo(85, 187)  // => 17
+
+// Note that when we write a recursive function that we will be memoizing,
+// we typically want to recurse to the memoized version, not the original.
+const factorial = memoize(function(n) {
+  return (n <= 1) ? 1 : n * factorial(n-1);
+});
+console.time('first time')
+factorial(25)      // => 120: also caches values for 4, 3, 2 and 1.
+console.timeEnd('first time')
+
+console.time('second time')
+factorial(24)      // => 120: also caches values for 4, 3, 2 and 1.
+console.timeEnd('second time')
