@@ -21,6 +21,8 @@
 ### JS - JavaScript
 
 1. [Learn JavaScript - Full Course for Beginners](https://www.youtube.com/watch?v=PkZNo7MFNFg&ab_channel=freeCodeCamp.org)
+2. Dark Mode JS _**book**_
+3. JavaScript: The Definitive Guide, Seventh Edition _**book**_
 
 ## BACK-END
 
@@ -38,11 +40,12 @@
 
 1. [All you need](https://www.youtube.com/watch?v=3FKrszHcIsA&ab_channel=BogdanStashchuk)
 
-## _PHASE-1_
+## _PHASE-2_
 
 ## Lang
 
 1. [Typescript](https://www.youtube.com/watch?v=gp5H0Vw39yw&ab_channel=freeCodeCamp.org)
+2. TypeScript Quickly _**book**_
 
 ## FRONT-END
 
