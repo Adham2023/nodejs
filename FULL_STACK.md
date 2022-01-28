@@ -6,7 +6,7 @@
 
 ### HTML
 
-1. [How The Web Works](https://link-url-here.org)
+1. [How The Web Works](https://www.youtube.com/watch?v=hJHvdBlSxug&t=107s&ab_channel=Academind)
 2. [HTML](https://www.youtube.com/watch?v=pQN-pnXPaVg&t=438s&ab_channel=freeCodeCamp.org)
 
 ### CSS3
